@@ -4,6 +4,10 @@
  * Plugin URI:  https://github.com/mAAdhaTTah/sitepoint-status-update
  * Description: Post your own Facebook-like status updates
  * Version:     1.0.0
+ * Author:      James DiGioia for SitePoint
+ * Author URI:  http://jamesdigioia.com
+ * Text Domain: wp-status-update
+ * Languages:   /languages
  */
 
 class SP_Status_Update {
@@ -139,11 +143,11 @@ CSS;
 	 * @return string         Customize embed output.
 	 */
 	public function get_excerpt_embed( $output ) {
-		if ( 'sp_status_update' !== get_post_type() ) {
-			return $output;
+		if ( 'sp_status_update' === get_post_type() ) {
+			return get_the_content();
 		}
 
-		return get_the_content();
+		return $output;
 	}
 
 	/**
